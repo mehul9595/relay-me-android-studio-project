@@ -1608,7 +1608,7 @@ public class ConfigurationTabFragment extends TabFragment implements ConfirmClea
     protected void onDeleteTargetEmailButtonClicked()
     {
         String emailAddress = getUserData().getMessagingConfiguration().getTargetEmailAddress();
-        ConfirmationDialogFragment frag = new ConfirmationDialogFragment_();
+        ConfirmationDialogFragment frag = new ConfirmationDialogFragment();
         Bundle args = new Bundle();
         args.putString(ConfirmationDialogFragment.ARGUMENT_TITLE, getString(R.string.lbl_delete_email_dialog_title));
         args.putString(ConfirmationDialogFragment.ARGUMENT_MESSAGE,
@@ -1656,7 +1656,7 @@ public class ConfigurationTabFragment extends TabFragment implements ConfirmClea
     protected void onDeleteCcEmailButtonClicked()
     {
         String emailAddress = getUserData().getMessagingConfiguration().getCcEmailAddress();
-        ConfirmationDialogFragment frag = new ConfirmationDialogFragment_();
+        ConfirmationDialogFragment frag = new ConfirmationDialogFragment();
         Bundle args = new Bundle();
         args.putString(ConfirmationDialogFragment.ARGUMENT_TITLE, getString(R.string.lbl_delete_email_dialog_title));
         args.putString(ConfirmationDialogFragment.ARGUMENT_MESSAGE,
@@ -1687,7 +1687,7 @@ public class ConfigurationTabFragment extends TabFragment implements ConfirmClea
     protected void onDeleteSmtpServerButtonClicked()
     {
         SmtpServer smtpServer = getUserData().getMessagingConfiguration().getSmtpServer();
-        ConfirmationDialogFragment frag = new ConfirmationDialogFragment_();
+        ConfirmationDialogFragment frag = new ConfirmationDialogFragment();
         Bundle args = new Bundle();
         args.putString(ConfirmationDialogFragment.ARGUMENT_TITLE,
                 getString(R.string.lbl_delete_smtp_server_dialog_title));
@@ -1805,7 +1805,7 @@ public class ConfigurationTabFragment extends TabFragment implements ConfirmClea
     protected void onDeleteImapServerButtonClicked()
     {
         ImapServer imapServer = getUserData().getMessagingConfiguration().getImapServer();
-        ConfirmationDialogFragment frag = new ConfirmationDialogFragment_();
+        ConfirmationDialogFragment frag = new ConfirmationDialogFragment();
         Bundle args = new Bundle();
         args.putString(ConfirmationDialogFragment.ARGUMENT_TITLE,
                 getString(R.string.lbl_delete_imap_server_dialog_title));
@@ -2050,7 +2050,7 @@ public class ConfigurationTabFragment extends TabFragment implements ConfirmClea
         }
         else
         {
-            DialogFragment confirmDialog = new OauthDialogFragment_();
+            DialogFragment confirmDialog = new OauthDialogFragment();
             confirmDialog.setTargetFragment(this, 0);
             confirmDialog.show(getChildFragmentManager(), "oauth_dialog");
         }
@@ -2059,7 +2059,7 @@ public class ConfigurationTabFragment extends TabFragment implements ConfirmClea
     @Click(R.id.cleargmailoauthbutton)
     protected void onClearOauthButtonClicked()
     {
-        DialogFragment confirmDialog = new ConfirmClearOauthDialogFragment_();
+        DialogFragment confirmDialog = new ConfirmClearOauthDialogFragment();
         confirmDialog.setTargetFragment(this, 0);
         confirmDialog.show(getChildFragmentManager(), "confirm_clear_oauth_dialog");
     }

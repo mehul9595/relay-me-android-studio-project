@@ -30,7 +30,7 @@
         android:label="@string/lbl_app_name"
         android:theme="@style/Theme.Codolutions" >
         <activity
-            android:name="com.tinywebgears.relayme.view.MainActivity_"
+            android:name="com.tinywebgears.relayme.view.MainActivity"
             android:label="@string/lbl_app_name"
             android:launchMode="singleTask" >
             <intent-filter>
@@ -72,6 +72,7 @@
             <intent-filter android:priority="2147483647" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
                 <action android:name="android.provider.Telephony.GSM_SMS_RECEIVED" />
+
                 <action android:name="com.tinywebgears.relayme.SMS_SENT" />
 
                 <category android:name="android.intent.category.DEFAULT" />
