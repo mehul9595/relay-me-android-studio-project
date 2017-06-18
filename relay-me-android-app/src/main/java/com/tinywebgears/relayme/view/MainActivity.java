@@ -72,20 +72,20 @@ public class MainActivity extends BaseTabActivity implements HelpDialogListener,
                 .newTab()
                 .setText(R.string.lbl_tab_configuration)
                 .setTabListener(
-                        new TabListener<ConfigurationTabFragment>(this, FRAGMENT_TAG_CONFIGURATION,
-                                ConfigurationTabFragment.class));
+                        new TabListener<ConfigurationTabFragment_>(this, FRAGMENT_TAG_CONFIGURATION,
+                                ConfigurationTabFragment_.class));
         actionBar.addTab(tab1);
         Tab tab2 = actionBar
                 .newTab()
                 .setText(R.string.lbl_tab_messages)
                 .setTabListener(
-                        new TabListener<MessagesTabFragment>(this, FRAGMENT_TAG_MESSAGES, MessagesTabFragment.class));
+                        new TabListener<MessagesTabFragment_>(this, FRAGMENT_TAG_MESSAGES, MessagesTabFragment_.class));
         actionBar.addTab(tab2);
         Tab tab3 = actionBar
                 .newTab()
                 .setText(R.string.lbl_tab_errors)
                 .setTabListener(
-                        new TabListener<ErrorsTabFragment>(this, FRAGMENT_TAG_ERRORS, ErrorsTabFragment.class));
+                        new TabListener<ErrorsTabFragment_>(this, FRAGMENT_TAG_ERRORS, ErrorsTabFragment_.class));
         actionBar.addTab(tab3);
 
         startService(new Intent(this, TaskSchedulingService.class));
@@ -274,19 +274,19 @@ public class MainActivity extends BaseTabActivity implements HelpDialogListener,
 
     private void showAlertDialog(String title, String text) {
         FragmentManager fm = getSupportFragmentManager();
-        AlertDialogFragment warningDialog = new AlertDialogFragment().setTitle(title).setMessage(text);
+        AlertDialogFragment warningDialog = new AlertDialogFragment_().setTitle(title).setMessage(text);
         warningDialog.show(fm, "fragment_alert_dialog");
     }
 
     private void showOpenSourceNotice() {
         FragmentManager fm = getSupportFragmentManager();
-        DialogFragment openSourceNoticeDialog = new OpenSourceNoticeDialogFragment();
+        DialogFragment openSourceNoticeDialog = new OpenSourceNoticeDialogFragment_();
         openSourceNoticeDialog.show(fm, "fragment_open_source_dialog");
     }
 
     private void showSmsHelpDialog() {
         FragmentManager fm = getSupportFragmentManager();
-        SmsHelpDialogFragment smsHelpDialog = new SmsHelpDialogFragment();
+        SmsHelpDialogFragment smsHelpDialog = new SmsHelpDialogFragment_();
         smsHelpDialog.setListener(this);
         smsHelpDialog.show(fm, "fragment_sms_helpdialog");
         FlurryAgent.logEvent(Constants.FLURRY_EVENT_SMS_HELP_DIALOG);
@@ -294,7 +294,7 @@ public class MainActivity extends BaseTabActivity implements HelpDialogListener,
 
     private void showAboutDialog() {
         FragmentManager fm = getSupportFragmentManager();
-        AboutDialogFragment aboutDialog = new AboutDialogFragment();
+        AboutDialogFragment aboutDialog = new AboutDialogFragment_();
         aboutDialog.show(fm, "fragment_about_dialog");
     }
 
@@ -310,7 +310,7 @@ public class MainActivity extends BaseTabActivity implements HelpDialogListener,
 
     private void showHelpDialog() {
         FragmentManager fm = getSupportFragmentManager();
-        HelpDialogFragment helpDialog = new HelpDialogFragment();
+        HelpDialogFragment helpDialog = new HelpDialogFragment_();
         helpDialog.show(fm, "fragment_help_dialog");
         FlurryAgent.logEvent(Constants.FLURRY_EVENT_HELP_DIALOG);
     }
@@ -335,7 +335,7 @@ public class MainActivity extends BaseTabActivity implements HelpDialogListener,
 
     private void showContactSupportDialog(boolean crashed) {
         FragmentManager fm = getSupportFragmentManager();
-        ContactSupportDialogFragment contactSupportDialog = new ContactSupportDialogFragment().setCrashed(crashed);
+        ContactSupportDialogFragment contactSupportDialog = new ContactSupportDialogFragment_().setCrashed(crashed);
         contactSupportDialog.show(fm, "fragment_help_contact_support");
         FlurryAgent.logEvent(Constants.FLURRY_EVENT_CONTACT_DIALOG);
     }

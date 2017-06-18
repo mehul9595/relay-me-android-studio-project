@@ -30,7 +30,7 @@
         android:label="@string/lbl_app_name"
         android:theme="@style/Theme.Codolutions" >
         <activity
-            android:name="com.tinywebgears.relayme.view.MainActivity"
+            android:name="com.tinywebgears.relayme.view.MainActivity_"
             android:label="@string/lbl_app_name"
             android:launchMode="singleTask" >
             <intent-filter>
