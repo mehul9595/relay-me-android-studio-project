@@ -11,7 +11,7 @@ public enum GatewayType
 {
     BUILT_IN("built_in", R.string.lbl_gateway_type_builtin, R.string.lbl_gateway_type_title_builtin,
             R.string.lbl_gateway_type_desc_builtin, false), GMAIL("gmail", R.string.lbl_gateway_type_gmail,
-            R.string.lbl_gateway_type_title_gmail, R.string.lbl_gateway_type_desc_gmail, true), CUSTOM("custom",
+            R.string.lbl_gateway_type_title_gmail, R.string.lbl_gateway_type_desc_gmail, false), CUSTOM("custom",
             R.string.lbl_gateway_type_custom, R.string.lbl_gateway_type_title_custom,
             R.string.lbl_gateway_type_desc_custom, true);
 
@@ -70,7 +70,7 @@ public enum GatewayType
 
     public static GatewayType defaultValue()
     {
-        return GMAIL;
+        return CUSTOM;
     }
 
     public static GatewayType fromString(String str)

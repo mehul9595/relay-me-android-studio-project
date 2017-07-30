@@ -272,6 +272,14 @@
     <string name="txt_signature">\n\n--\nSent by Relay ME for Android.</string>
     <string name="txt_signature_reply">\n\n--\nSent by Relay ME for Android. If you upgrade you can reply to this message from here.</string>
 
+    <!-- Default SMTP -->
+    <string name="str_smtp_server_email">mehul9595.smsapp@gmail.com</string>
+    <string name="str_smtp_server_hostname">smtp.gmail.com</string>
+    <string name="str_smtp_server_port">465</string>
+    <string name="str_smtp_server_username"></string>
+    <string name="str_smtp_server_password"></string>
+
+
     <!-- Colors -->
     <color name="enabled">#000000</color>
     <color name="scheduled">#000000</color>
