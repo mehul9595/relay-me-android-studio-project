@@ -5,10 +5,13 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.Telephony;
+import android.telephony.SmsMessage;
 
 import com.codolutions.android.common.exception.OperationFailedException;
 import com.codolutions.android.common.util.DateUtil;
@@ -229,10 +232,29 @@ public class MessagingIntentService extends BasicMessagingIntentService
             sendSmsMessage(message, true);
     }
 
+    /*private void checkForSMSPDUs(Context context, Intent intent)
+    {
+        Bundle data  = intent.getExtras();
+
+        Object[] pdus = (Object[]) data.get("pdus");
+
+        for(int i=0;i<pdus.length;i++){
+            SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) pdus[i]);
+
+            String sender = smsMessage.getDisplayOriginatingAddress();
+            //You must check here if the sender is your provider and not another one with same text.
+
+            String messageBody = smsMessage.getMessageBody();
+
+            //Pass on the text to our listener.
+            ///mListener.messageReceived(messageBody);
+        }
+    }*/
+
     private void checkForNewSms()
     {
         Date lastSmsTimestamp = getLastSmsTimestamp();
-        Cursor cursor = getContentResolver().query(Uri.parse("content://sms/inbox"),
+        Cursor cursor = getContentResolver().query(Uri.parse("content://sms/"),
                 new String[] { "_id", "type", "address", "date", "body" }, "date > ?",
                 new String[] { Long.toString(lastSmsTimestamp.getTime()) }, "date ASC");
         try
@@ -248,7 +270,15 @@ public class MessagingIntentService extends BasicMessagingIntentService
                     for (int i = 0; i < count; i++)
                     {
                         long id = cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.Sms.Inbox._ID));
-                        String sender = cursor.getString(cursor.getColumnIndexOrThrow("address"));
+                        String sender = "";
+                        try
+                        {
+                            sender = cursor.getString(cursor.getColumnIndexOrThrow("address"));
+                        }
+                        catch (IllegalArgumentException e)
+                        {
+                            sender = "DEFAULT_SENDER";
+                        }
                         Date date = new Date(cursor.getLong(cursor.getColumnIndexOrThrow("date")));
                         String text = cursor.getString(cursor.getColumnIndexOrThrow("body"));
                         LogStoreHelper.info(this, "SMS " + id + " from " + sender + " arrived on " + date);
